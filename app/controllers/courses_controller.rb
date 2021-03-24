@@ -4,6 +4,7 @@ class CoursesController < ApplicationController
   # GET /courses or /courses.json
   def index
     @courses = Course.all
+    authorize @courses
   end
 
   # GET /courses/1 or /courses/1.json
@@ -13,6 +14,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
+    authorize @course
   end
 
   # GET /courses/1/edit
@@ -22,6 +24,8 @@ class CoursesController < ApplicationController
   # POST /courses or /courses.json
   def create
     @course = Course.new(course_params)
+    @course.user = current_user
+    authorize @course
 
     respond_to do |format|
       if @course.save
@@ -49,7 +53,12 @@ class CoursesController < ApplicationController
 
   # DELETE /courses/1 or /courses/1.json
   def destroy
-    @course.destroy
+    if @course.present?
+      authorize @course
+      @course.destroy
+    else
+      skip_authorization
+    end
     respond_to do |format|
       format.html { redirect_to courses_url, notice: "Course was successfully destroyed." }
       format.json { head :no_content }
@@ -60,6 +69,7 @@ class CoursesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_course
       @course = Course.find(params[:id])
+      authorize @course
     end
 
     # Only allow a list of trusted parameters through.
