@@ -10,9 +10,11 @@
         <li class="nav-item">
             <%= link_to 'Course', courses_path, class:"nav-link" %>
         </li>
+        <% if current_user.role == 'instructor' %>
         <li class="nav-item">
             <%= link_to 'Student List', users_path, class:"nav-link" %>
         </li>
+        <% end %>
         <li class="nav-item">
             <%= link_to 'Group', groups_path, class:"nav-link" %>
           </li>
