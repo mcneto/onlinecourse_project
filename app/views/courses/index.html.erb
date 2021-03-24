@@ -1,29 +1,31 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Courses</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Course name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.user_id %></td>
-        <td><%= course.course_name %></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="container">
+  <div class="row row-cols-auto">
+    <div class="col">
+      <h2>Courses</h2>
+    </div>
+    <div class="col">
+      <%= link_to '+', new_course_path, class:'btn btn-outline-primary' %>
+    </div>
+  </div>
+</div>
 <br>
-
-<%= link_to 'New Course', new_course_path %>
+<div class="container">
+    <% @courses.each do |course| %>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= course.course_name %></h5>
+          <strong>owned by user_id: <%= course.user_id %></strong>
+          <p class="card-text"> </p>
+          <%= link_to 'Show', course , class:'btn btn-secondary' %>
+          <% if policy(course).update? %>
+            <%= link_to 'Edit', edit_course_path(course), class:'btn btn-secondary'  %>
+          <% end %>
+          <% if policy(course).destroy? %>
+            <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger'  %>
+          <% end %>
+        </div>
+      </div>
+      <br>
+    <% end %>
+</div>

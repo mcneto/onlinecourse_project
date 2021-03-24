@@ -1,19 +1,19 @@
-<div class="card">
+<div class="card" style="width:70% ; margin:0 auto">
   <div class="card-header">
     <h4>Edit Profile<% resource_name.to_s.humanize %></h4>
   </div>
   <div class="card-body">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-      <div class="form-select form-select-sm" aria-label=".form-select-sm example">
-        <%= f.label :Role %><br />
-        <%= f.select :role, [["Instructor", "instructor"], ["Student", "student"]], {}, {class: "form-control"} %>
+      <div >
+          Role: <%= current_user.role %><br />
       </div>
-      <% if current_user %>
+      <% if current_user.role == 'instructor' %>
         <div class="well well-sm">
-          Instructor: <strong><%= current_user.instructor? %></strong><br>
-          <%= link_to 'Toggle Instructor Rights', user_path(current_user), method: :patch, class: 'btn btn-info' %>
+          Instructor_Rights: <strong><%= current_user.instructor? %></strong><br>
+          <%= link_to 'Toggle Instructor Rights', user_path(current_user), method: :patch, class: 'btn btn-outline-danger' %>
         </div>
+        <br />
       <% end %>
       <div class="field mb-3">
         <%= f.label :"First Name" %><br />
@@ -59,12 +59,13 @@
 
 <br/>
 <br/>
-<div class="card">
+<div class="card" style="width:70% ; margin:0 auto">
   <h5 class="card-header">Cancel my account</h5>
   <div class="card-body">
-    <p class="card-text">Unhappy?</p>
+    <p class="card-text">Want to delete account?</p>
     <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:'btn btn-danger' %></p>
 </div>
 </div>
 <br/>
-<%= link_to "Back", :back %>
+<div style="width:70% ; margin:0 auto"><%= link_to "Back", :back, class:"btn btn-primary" %></div>
+<br/>
