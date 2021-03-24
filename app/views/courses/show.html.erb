@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<div class="card w-50">
+<div class="card-body">
 <p>
   <strong>User:</strong>
   <%= @course.user_id %>
@@ -10,5 +11,8 @@
   <%= @course.course_name %>
 </p>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Edit', edit_course_path(@course), class:"btn btn-secondary btn-sm" %> |
+<%= link_to 'Back', courses_path, class:"btn btn-primary btn-sm" %>
+</div>
+</div>
+

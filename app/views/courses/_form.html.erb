@@ -1,3 +1,5 @@
+<div class="card w-50">
+  <div class="card-body">
 <%= form_with(model: course) do |form| %>
   <% if course.errors.any? %>
     <div id="error_explanation">
@@ -11,17 +13,20 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field mb-3">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.text_field :user_id, class:"form-control", placeholder:"User ID" %>
   </div>
 
-  <div class="field">
+  <div class="field mb-3">
     <%= form.label :course_name %>
-    <%= form.text_field :course_name %>
+    <%= form.text_field :course_name, class:"form-control", placeholder:"Course Name" %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>
+</div>
+<br>

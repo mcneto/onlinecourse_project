@@ -1,0 +1,37 @@
+<table class="table caption-top">
+  <caption>List of Students</caption>
+  <thead>
+  <tr>
+  <th>User ID</th>
+  <th>First Name</th>
+  <th>Last name</th>
+  <th>Citizen ID</th>
+  <th>Email</th>
+  <th>Tool</th>
+  <th colspan="6"></th>
+</tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <% if user.role == 'student' %>
+    <tr>
+    <td><%= user.id %></td>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= user.citizen_id %></td>
+    <td><%= user.email %></td>
+    <td>
+    <%=
+        link_to 'Delete', 
+        user_path(user), 
+        method: :delete, 
+        data: { confirm: "Really delete this user?" },
+        class:"btn btn-outline-danger btn-sm"
+    %>
+    </td>
+    </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
