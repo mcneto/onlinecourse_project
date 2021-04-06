@@ -5,7 +5,9 @@
       <h2>Courses</h2>
     </div>
     <div class="col">
-      <%= link_to '+', new_course_path, class:'btn btn-outline-primary' %>
+      <% if current_user.instructor? %>
+        <%= link_to '+', new_course_path, class:'btn btn-outline-primary' %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -16,14 +18,14 @@ flex-flow:row wrap; justify-content:left;">
       <div class="card" style="width: 18rem; margin-right: 20px; margin-bottom: 20px;">
         <div class="card-body">
           <h5 class="card-title"><%= course.course_name %></h5>
-          <strong>owned by user_id: <%= course.user_id %></strong>
+          <strong>created by user_id: <%= course.user_id %></strong>
           <p class="card-text"> </p>
           <%= link_to 'Show', course , class:'btn btn-secondary' %>
           <% if policy(course).update? %>
             <%= link_to 'Edit', edit_course_path(course), class:'btn btn-secondary'  %>
           <% end %>
           <% if policy(course).destroy? %>
-            <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger'  %>
+            <%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger'  %>
           <% end %>
         </div>
       </div>
