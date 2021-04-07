@@ -7,6 +7,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_groups_on_id  (id)
+#
 
 one:
   group_name: MyString

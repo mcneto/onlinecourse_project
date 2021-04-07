@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_040627) do
+ActiveRecord::Schema.define(version: 2021_04_07_075150) do
 
   create_table "courses", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_040627) do
     t.string "group_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["id"], name: "index_groups_on_id"
   end
 
   create_table "user_groups", force: :cascade do |t|
