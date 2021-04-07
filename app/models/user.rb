@@ -5,16 +5,16 @@
 #  id                     :integer          not null, primary key
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
-#  first_name             :string
+#  first_name             :string           not null
 #  instructor             :boolean          default(FALSE), not null
-#  last_name              :string
+#  last_name              :string           not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  role                   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  citizen_id             :string
+#  citizen_id             :string           not null
 #
 # Indexes
 #

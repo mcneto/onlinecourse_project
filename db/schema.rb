@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_24_023858) do
+ActiveRecord::Schema.define(version: 2021_04_07_040627) do
 
   create_table "courses", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "course_name"
+    t.string "course_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string "group_name"
+    t.string "group_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 2021_03_24_023858) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "citizen_id"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "citizen_id", null: false
     t.boolean "instructor", default: false, null: false
     t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
