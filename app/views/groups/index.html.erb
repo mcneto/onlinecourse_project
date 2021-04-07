@@ -7,28 +7,26 @@
     <div class="col">
       <% if current_user.instructor? %>
         <%= link_to '+', new_group_path, class:'btn btn-outline-primary' %>
-        <% end %>
+      <% end %>
     </div>
   </div>
-
-<br>
-<div class="container" style="display:flex;
-flex-flow:row wrap; justify-content:left;">
-<% @groups.each do |group| %>
-<div class="card border-dark mb-3" style="width: 18rem; margin-right:20px;">
-  <div class="card-header">Group</div>
-  <div class="card-body">
-    <h5 class="card-title"><%= group.group_name %></h5>
-    <p class="card-text"> </p>
-    <%= link_to 'Show', group, class:"btn btn-outline-secondary btn-sm" %>
-    <% if policy(group).update? %>
-      <%= link_to 'Edit', edit_group_path(group), class:"btn btn-outline-secondary btn-sm" %>
-    <% end %>
-    <% if policy(group).destroy? %>
-      <%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger btn-sm" %>
+  <br>
+  <div class="container" style="display:flex; flex-flow:row wrap; justify-content:left;">
+    <% @groups.each do |group| %>
+      <div class="card border-dark mb-3" style="width: 18rem; margin-right:20px;">
+        <div class="card-header">Group</div>
+        <div class="card-body">
+          <h5 class="card-title"><%= group.group_name %></h5>
+          <p class="card-text"> </p>
+          <%= link_to 'Show', group, class:"btn btn-outline-secondary btn-sm" %>
+          <% if policy(group).update? %>
+            <%= link_to 'Edit', edit_group_path(group), class:"btn btn-outline-secondary btn-sm" %>
+          <% end %>
+          <% if policy(group).destroy? %>
+            <%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger btn-sm" %>
+          <% end %>
+        </div>
+      </div>
     <% end %>
   </div>
-</div>
-<% end %>
-</div>
 </div>

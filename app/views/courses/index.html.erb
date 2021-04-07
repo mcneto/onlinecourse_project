@@ -12,23 +12,22 @@
   </div>
 </div>
 <br>
-<div class="container" style="display:flex;
-flex-flow:row wrap; justify-content:left;">
-    <% @courses.each do |course| %>
-      <div class="card" style="width: 18rem; margin-right: 20px; margin-bottom: 20px;">
-        <div class="card-body">
-          <h5 class="card-title"><%= course.course_name %></h5>
-          <strong>created by user_id: <%= course.user_id %></strong>
-          <p class="card-text"> </p>
-          <%= link_to 'Show', course , class:'btn btn-secondary' %>
-          <% if policy(course).update? %>
-            <%= link_to 'Edit', edit_course_path(course), class:'btn btn-secondary'  %>
-          <% end %>
-          <% if policy(course).destroy? %>
-            <%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger'  %>
-          <% end %>
-        </div>
+<div class="container" style="display:flex; flex-flow:row wrap; justify-content:left;">
+  <% @courses.each do |course| %>
+    <div class="card" style="width: 18rem; margin-right: 20px; margin-bottom: 20px;">
+      <div class="card-body">
+        <h5 class="card-title"><%= course.course_name %></h5>
+        <strong>created by user_id: <%= course.user_id %></strong>
+        <p class="card-text"> </p>
+        <%= link_to 'Show', course , class:'btn btn-secondary' %>
+        <% if policy(course).update? %>
+          <%= link_to 'Edit', edit_course_path(course), class:'btn btn-secondary'  %>
+        <% end %>
+        <% if policy(course).destroy? %>
+          <%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger'  %>
+        <% end %>
       </div>
-      <br>
-    <% end %>
+    </div>
+    <br>
+  <% end %>
 </div>

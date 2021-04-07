@@ -6,45 +6,45 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
       <%= f.fields_for :first_name, resource.first_name ? resource.first_name : resource.build_first_name do |first_name_form| %>
-        <%= first_name_form.label :id, "Address" %>
-        <%= first_name_form.collection_select :id, First_name.where(user_id: nil), :id, :first_name, include_blank: "Choose first_name", class: "form-control" %>
+      <%= first_name_form.label :id, "Address" %>
+      <%= first_name_form.collection_select :id, First_name.where(user_id: nil), :id, :first_name, include_blank: "Choose first_name", class: "form-control" %>
     <% end %>
-      <div class="form-select form-select-sm">
-        <%= f.label :Role %><br />
-        <%= f.select :role, [["Student", "student"]], {}, {class: "form-control"} %>
-      </div>
-      <div class="field mb-3">
-        <%= f.label :"First Name" %><br />
-        <%= f.text_field :first_name, class:"form-control", placeholder:"First Name", autofocus: false %>
-      </div>
-      <div class="field mb-3">
-        <%= f.label :"Last Name" %><br />
-        <%= f.text_field :last_name, class:"form-control", placeholder:"Last Name", autofocus: false %>
-      </div>
-      <div class="field mb-3">
-        <%= f.label :"Citizen ID" %><br />
-        <%= f.text_field :citizen_id, class:"form-control", placeholder:"Citizen ID", autofocus: false %>
-      </div>
-      <div class="field mb-3">
-        <%= f.label :email %>
-        <%= f.email_field :email, class:"form-control", placeholder:"Email", autofocus: true, autocomplete: "email" %>
-      </div>
-      <div class="field mb-3">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %>
-        <%= f.password_field :password, class:"form-control", placeholder:"Password", autocomplete: "new-password" %>
-      </div>
-      <div class="field mb-3">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, class:"form-control", placeholder:"Password Confirmation", autocomplete: "new-password" %>
-      </div>
+    <div class="form-select form-select-sm">
+      <%= f.label :Role %><br />
+      <%= f.select :role, [["Student", "student"]], {}, {class: "form-control"} %>
+    </div>
+    <div class="field mb-3">
+      <%= f.label :"First Name" %><br />
+      <%= f.text_field :first_name, class:"form-control", placeholder:"First Name", autofocus: false %>
+    </div>
+    <div class="field mb-3">
+      <%= f.label :"Last Name" %><br />
+      <%= f.text_field :last_name, class:"form-control", placeholder:"Last Name", autofocus: false %>
+    </div>
+    <div class="field mb-3">
+      <%= f.label :"Citizen ID" %><br />
+      <%= f.text_field :citizen_id, class:"form-control", placeholder:"Citizen ID", autofocus: false %>
+    </div>
+    <div class="field mb-3">
+      <%= f.label :email %>
+      <%= f.email_field :email, class:"form-control", placeholder:"Email", autofocus: true, autocomplete: "email" %>
+    </div>
+    <div class="field mb-3">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+      <%= f.password_field :password, class:"form-control", placeholder:"Password", autocomplete: "new-password" %>
+    </div>
+    <div class="field mb-3">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class:"form-control", placeholder:"Password Confirmation", autocomplete: "new-password" %>
+    </div>
       
-      <div class="actions">
-        <%= f.submit "Sign up", class:'btn btn-secondary' %>
-      </div>
-    <% end %>
+    <div class="actions">
+      <%= f.submit "Sign up", class:'btn btn-secondary' %>
+    </div>
+    
     <%= render "users/shared/links" %>
   </div>
 </div>
