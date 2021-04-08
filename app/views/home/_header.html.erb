@@ -10,7 +10,7 @@
           <li class="nav-item">
             <%= link_to 'Course', courses_path, class:"nav-link" %>
           </li>
-          <% if current_user.role == 'instructor' %>
+          <% if current_user.instructor? %>
             <li class="nav-item">
               <%= link_to 'Student List', users_path, class:"nav-link" %>
             </li>

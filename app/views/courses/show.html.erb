@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
 <div class="card w-50">
-<div class="card-body">
-<p>
-  <strong>User:</strong>
-  <%= @course.user_id %>
-</p>
+  <div class="card-body">
+    <p>
+      <strong>User:</strong>
+      <%= @course.user_id %>
+    </p>
 
-<p>
-  <strong>Course name:</strong>
-  <%= @course.course_name %>
-</p>
-
-<%= link_to 'Edit', edit_course_path(@course), class:"btn btn-secondary btn-sm" %> |
-<%= link_to 'Back', courses_path, class:"btn btn-primary btn-sm" %>
+    <p>
+      <strong>Course name:</strong>
+      <%= @course.course_name %>
+    </p>
+    <% if policy(@course).update? %> 
+      <%= link_to 'Edit',edit_course_path(@course), class:"btn btn-secondary btn-sm" %> | 
+    <% end %>
+    <%= link_to 'Back', courses_path, class:"btn btn-primary btn-sm" %>
+  </div>
 </div>
-</div>
-
